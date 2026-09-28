@@ -14,11 +14,19 @@ spec:
     spec:
       containers:
       - name: lab-app
-        image: lab-app:production-build
+        image: lab-app:v2.3.0
         ports:
         - containerPort: 3000
         env:
         - name: API_KEY
-          value: "test-api-key-1234"
+          value: "my-secret-api-key" 
         - name: DATABASE_PASSWORD
-          value: "password123"
+          valueFrom:
+            secretKeyRef:
+              name: api-key-secret
+              key: api-key
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: password
