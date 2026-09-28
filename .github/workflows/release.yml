@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - main
-  env:
-    RELEASE_VERSION: ${1:-v2.3.0}
-    API_KEY: ${{ secrets.API_KEY }}
-    DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-    TOKEN: ${{ secrets.TOKEN }}
-    AWS_SECRET: ${{ secrets.AWS_SECRET }}
 
+env:
+  RELEASE_VERSION: v2.3.0
+  ENVIRONMENT: production
+  API_KEY: ${{ secrets.API_KEY }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+  TOKEN: ${{ secrets.TOKEN }}
+  AWS_SECRET: ${{ secrets.AWS_SECRET }}
 jobs:
   validate-release:
     runs-on: ubuntu-latest
